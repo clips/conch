@@ -1,0 +1,6 @@
+numpy==1.12.1
+regex==2017.11.9
+tqdm==4.14.0
+lxml==3.8.0
+reach==2.0.2
+scikit_learn==0.19.1
