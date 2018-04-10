@@ -61,8 +61,7 @@ if __name__ == "__main__":
     for a, b in zip(data, gold):
         assert len(a[0]) == len(b[0])
 
-    embeddings = Reach.load("../../vectors/bio/"
-                            "mimic_fasttext_new_320.vec", unk_word="UNK")
+    embeddings = Reach.load("", unk_word="UNK")
 
     scores = {}
 
