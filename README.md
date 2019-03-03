@@ -2,7 +2,20 @@
 
 Unsupervised concept extraction from clinical text.
 
-Currently submitted to the Journal of Biomedical Informatics.
+This is the code associated with the publication: `Unsupervised concept extraction from clinical text through semantic composition`, published in the [Journal of Biomedical Informatics](https://www.sciencedirect.com/science/article/pii/S1532046419300383).
+
+If you use this code, please cite:
+
+```
+@article{tulkens2019unsupervised,
+  title={Unsupervised Concept Extraction from Clinical Text through Semantic Composition},
+  author={Tulkens, St{\'e}phan and {\v{S}}uster, Simon and Daelemans, Walter},
+  journal={Journal of Biomedical Informatics},
+  pages={103120},
+  year={2019},
+  publisher={Elsevier}
+}
+```
 
 `ConCH` (Concept CHecker) extracts concepts by first extracting noun phrases from a corpus using a chunker or a parser. These noun phrases are then turned into vector representations through composition of their constituent word vectors. In the paper, we use the `mean` function as a composition function, but other functions can also be used.
 
