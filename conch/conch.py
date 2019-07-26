@@ -59,8 +59,6 @@ def reciprocal(x):
 
 
 def compose(documents,
-            f1,
-            f2,
             embeddings,
             window,
             context_function,
@@ -75,12 +73,6 @@ def compose(documents,
         A list of lists, where each sublist contains 2 lists of the same
         length, where the first list contains the tokens of a text, and
         the second list contains the BIO of the NP chunks for said text.
-    f1 : function
-        A function which is used to compose the vectorized lists of words
-        into a single vector. Must take an axis parameter.
-    f2 : function
-        A function which is used to compose the vectors vectorized with f1
-        into a second-order vector. Must also take an axis parameter.
     embeddings : Reach
         A reach instance which contains the embeddings you want to use to
         vectorize.
@@ -115,8 +107,8 @@ def compose(documents,
                                                          e,
                                                          window,
                                                          embeddings,
-                                                         f1,
-                                                         f2,
+                                                         np.mean,
+                                                         np.mean,
                                                          context_function,
                                                          use_focus,
                                                          norm)

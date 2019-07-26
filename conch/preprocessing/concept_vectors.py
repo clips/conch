@@ -15,8 +15,6 @@ def create_concepts(concepts,
     concept_names = []
     vectors = []
 
-    concept_labels = []
-
     for name, descriptions in tqdm(list(concepts.items())):
 
         if labels is not None:
@@ -45,8 +43,6 @@ def create_concepts(concepts,
         if not concept:
             continue
 
-        concept_labels.append(label)
-        name = "{0}_{1}".format(name, "_".join(descriptions[0].split()))
         concept_names.append(name)
         vectors.append(np.array(concept).mean(axis=0))
 
