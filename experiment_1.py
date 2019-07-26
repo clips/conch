@@ -5,7 +5,6 @@ Running this code will replicate experiment 1 from the paper.
 Because of the low run-time for these experiments, we run both the Perfect
 and parsed experiments at the same time.
 """
-import numpy as np
 import json
 
 from conch.evaluation.intrinsic import evaluate_intrinsic
@@ -18,8 +17,6 @@ from itertools import chain
 
 def experiment(parsed,
                gold_chunks,
-               f1,
-               f2,
                embeddings,
                context_function,
                window,
@@ -29,8 +26,6 @@ def experiment(parsed,
     _, np_chunks = zip(*parsed)
 
     phrase_embeddings = compose(parsed,
-                                f1=f1,
-                                f2=f2,
                                 window=window,
                                 embeddings=embeddings,
                                 context_function=context_function,
@@ -67,8 +62,6 @@ if __name__ == "__main__":
 
     focus = experiment(data,
                        gold_chunks,
-                       np.mean,
-                       np.mean,
                        embeddings,
                        reciprocal,
                        0,
@@ -77,8 +70,6 @@ if __name__ == "__main__":
 
     full = experiment(data,
                       gold_chunks,
-                      np.mean,
-                      np.mean,
                       embeddings,
                       reciprocal,
                       10,
@@ -87,8 +78,6 @@ if __name__ == "__main__":
 
     context = experiment(data,
                          gold_chunks,
-                         np.mean,
-                         np.mean,
                          embeddings,
                          reciprocal,
                          10,
@@ -97,8 +86,6 @@ if __name__ == "__main__":
 
     full_perfect = experiment(gold,
                               gold_chunks,
-                              np.mean,
-                              np.mean,
                               embeddings,
                               reciprocal,
                               10,
@@ -107,8 +94,6 @@ if __name__ == "__main__":
 
     focus_perfect = experiment(gold,
                                gold_chunks,
-                               np.mean,
-                               np.mean,
                                embeddings,
                                reciprocal,
                                0,
@@ -117,8 +102,6 @@ if __name__ == "__main__":
 
     context_perfect = experiment(gold,
                                  gold_chunks,
-                                 np.mean,
-                                 np.mean,
                                  embeddings,
                                  reciprocal,
                                  10,
@@ -134,8 +117,6 @@ if __name__ == "__main__":
 
     baseline = experiment(data,
                           gold_chunks,
-                          np.mean,
-                          np.mean,
                           embeddings,
                           reciprocal,
                           0,
@@ -144,8 +125,6 @@ if __name__ == "__main__":
 
     baseline_perfect = experiment(gold,
                                   gold_chunks,
-                                  np.mean,
-                                  np.mean,
                                   embeddings,
                                   reciprocal,
                                   0,

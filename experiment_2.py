@@ -3,7 +3,6 @@ Run transfer experiments.
 
 Running this file will replicate experiment 2 from the paper.
 """
-import numpy as np
 import json
 
 from conch.evaluation.intrinsic import evaluate_transfer
@@ -18,8 +17,6 @@ def experiment(parsed_train,
                gold_chunks_train,
                parsed_test,
                gold_chunks_test,
-               f1,
-               f2,
                embeddings,
                context_function,
                window,
@@ -30,16 +27,12 @@ def experiment(parsed_train,
     _, np_chunks_test = zip(*parsed_test)
 
     phrase_embeddings_train = compose(parsed_train,
-                                      f1=f1,
-                                      f2=f2,
                                       window=window,
                                       embeddings=embeddings,
                                       context_function=context_function,
                                       use_focus=use_focus)
 
     phrase_embeddings_test = compose(parsed_test,
-                                     f1=f1,
-                                     f2=f2,
                                      window=window,
                                      embeddings=embeddings,
                                      context_function=context_function,
@@ -86,8 +79,6 @@ if __name__ == "__main__":
                            gold_chunks_train,
                            parsed_test,
                            gold_chunks_test,
-                           np.mean,
-                           np.mean,
                            embeddings,
                            reciprocal,
                            0,
@@ -98,8 +89,6 @@ if __name__ == "__main__":
                           gold_chunks_train,
                           parsed_test,
                           gold_chunks_test,
-                          np.mean,
-                          np.mean,
                           embeddings,
                           reciprocal,
                           10,
@@ -110,8 +99,6 @@ if __name__ == "__main__":
                              gold_chunks_train,
                              parsed_test,
                              gold_chunks_test,
-                             np.mean,
-                             np.mean,
                              embeddings,
                              reciprocal,
                              10,
@@ -126,8 +113,6 @@ if __name__ == "__main__":
                           gold_chunks_train,
                           parsed_test,
                           gold_chunks_test,
-                          np.mean,
-                          np.mean,
                           embeddings,
                           reciprocal,
                           0,

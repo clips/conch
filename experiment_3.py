@@ -4,7 +4,6 @@ Extrinsic evaluation on the i2b2 data.
 Experiment 3 in the paper.
 Set the boolean flag Perfect to True if you want to try perfect chunking.
 """
-import numpy as np
 import json
 
 from itertools import chain
@@ -43,8 +42,6 @@ if __name__ == "__main__":
     results_bio = {}
 
     r_phrases = compose(data,
-                        f1=np.mean,
-                        f2=np.mean,
                         window=0,
                         embeddings=embeddings,
                         context_function=reciprocal)
@@ -56,8 +53,6 @@ if __name__ == "__main__":
                                     250)
 
     r_phrases = compose(data,
-                        f1=np.mean,
-                        f2=np.mean,
                         window=10,
                         embeddings=embeddings,
                         context_function=reciprocal)
@@ -74,8 +69,6 @@ if __name__ == "__main__":
                                                        include_np=True)
 
     r_phrases = compose(data,
-                        f1=np.mean,
-                        f2=np.mean,
                         window=0,
                         embeddings=baseline_embeddings,
                         context_function=reciprocal)
