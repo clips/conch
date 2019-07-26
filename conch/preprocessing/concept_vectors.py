@@ -8,11 +8,10 @@ from reach import Reach
 
 def create_concepts(concepts,
                     embeddings,
-                    include_np=True):
+                    include_np=True,
+                    labels=None):
     """Create concepts by summing over descriptions in embedding spaces."""
     # Gold standard labels for concepts:
-    sty = json.load(open("data/concept_label.json"))
-
     concept_names = []
     vectors = []
 
@@ -20,10 +19,11 @@ def create_concepts(concepts,
 
     for name, descriptions in tqdm(list(concepts.items())):
 
-        try:
-            label = sty[name]
-        except KeyError:
-            continue
+        if labels is not None:
+            try:
+                label = sty[name]
+            except KeyError:
+                continue
 
         if not include_np and label == "np":
             continue
@@ -51,9 +51,8 @@ def create_concepts(concepts,
         vectors.append(np.array(concept).mean(axis=0))
 
     r = Reach(np.array(vectors), concept_names)
-    name2label = dict(zip(concept_names, concept_labels))
 
-    return r, name2label
+    return r
 
 
 if __name__ == "__main__":
@@ -62,7 +61,9 @@ if __name__ == "__main__":
     r_1 = Reach.load(path_to_embeddings, unk_word="UNK")
 
     concepts = json.load(open("data/all_concepts.json"))
-    r, name2label = create_concepts(concepts, r_1, include_np=True)
-
+    sty = json.load(open("data/concept_label.json"))
+    r = create_concepts(concepts, r_1, include_np=True, labels=sty)
     r.save_fast_format("data/concept_vectors")
+
+    name2label = {k: sty[k.split("-")[0]] for k in r.items()}
     json.dump(name2label, open("data/names2label.json", 'w'))
