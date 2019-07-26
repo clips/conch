@@ -82,17 +82,17 @@ phrases = compose(data,
 
 # Phrases is an embedding space containing phrases that can be saved.
 print(phrases.items)
->>> {"['had']-['some', 'milk']-[]-3": 3,
-     "['walked']-['home']-[]-1": 1,
+>>> {"['she', 'had']-['some', 'milk']-[]-3": 3,
+     "['the', 'cat', 'walked']-['home']-[]-1": 1,
      "[]-['she']-['had', 'some', 'milk']-2": 2,
      "[]-['the', 'cat']-['walked', 'home']-0": 0}
 print(phrases.norm_vectors.dot(phrases.norm_vectors.T))
->>> array([[1.        , 0.84016205, 0.39185037, 0.46664165],
-           [0.84016205, 1.        , 0.23170359, 0.26717227],
-           [0.39185037, 0.23170359, 1.        , 0.71929454],
-           [0.46664165, 0.26717227, 0.71929454, 1.        ]])
-r.save("phrases.vec")
+>>> [[1.         0.98202943 0.82762074 0.81481438]
+     [0.98202943 1.         0.81700593 0.80702512]
+     [0.82762074 0.81700593 1.         0.97647301]
+     [0.81481438 0.80702512 0.97647301 1.        ]]
 
+r.save("phrases.vec")
 ```
 
 The same applies to creating the concept vectors, except these are dicts mapping from a name to a list of tokenized descriptions.

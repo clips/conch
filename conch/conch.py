@@ -140,7 +140,7 @@ def create_phrase_vector(doc,
     # Create windows.
     if window > 0:
         right_window = doc[end:end+window]
-        left_window = doc[begin-window:begin]
+        left_window = doc[max(begin-window, 0):begin][::-1]
     else:
         right_window, left_window = [], []
 
