@@ -76,8 +76,6 @@ from conch import compose
 
 r = Reach.load("my_embeddings.vec")
 phrases = compose(data,
-                  f1=np.mean,
-                  f2=np.mean,
                   embeddings=r,
                   window=5,
                   context_function=lambda x: x)
